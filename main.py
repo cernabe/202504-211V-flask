@@ -1,5 +1,7 @@
-def main():
-    return "hello"
+from flask import Flask
 
-def peru():
-    return "Carlos"
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello, World! Hola Chicos"
