@@ -9,5 +9,6 @@ cd 202504-211V-flask
 2. Instalar uv
 ```bash
 uv sync
+uv run flask --app main run
 ```
 
