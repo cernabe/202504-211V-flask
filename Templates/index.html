@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<p> estes es mi index </p>
-{{datos}}
+<p>este es mi index</p>
+
+{% for post in post_list %}
+    <p>{{ post }}</p>
+{% endfor %}
+
 {% endblock %}

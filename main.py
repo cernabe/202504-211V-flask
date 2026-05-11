@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, request, url_for, abort
+import sqlite3
 
 app = Flask(__name__)
 
@@ -6,10 +7,13 @@ app = Flask(__name__)
 def root():
     return render_template(template_name_or_list="base.html") #view
 
-@app.route("/index") # controlador
+@app.route("/index")  # controlador
 def index():
-    base_de_datos   =   ["jorge", "pepe","Juanito"] # modelos
-    return render_template(template_name_or_list="index.html", datos=base_de_datos ) #view
+    connection = sqlite3.connect("basedatos.db")
+    cur = connection.cursor()
+    posts = cur.execute("SELECT * FROM posts;").fetchall()
+
+    return render_template("index.html", post_list=posts)
 
 @app.route("/home") # controlador
 def home():
