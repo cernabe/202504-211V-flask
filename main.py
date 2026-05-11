@@ -2,16 +2,17 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
+@app.route("/") # controlador
+def root():
+    return render_template(template_name_or_list="base.html") #view
 
 @app.route("/index") # controlador
-def hello():
+def index():
     base_de_datos   =   ["jorge", "pepe","Juanito"] # modelos
-    return render_template(
-        "index.html",
-        datos=base_de_datos
-    )
- #view
+    return render_template(template_name_or_list="index.html", datos=base_de_datos ) #view
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route("/home") # controlador
+def home():
+    return render_template(template_name_or_list="home.html") #view
+
+
